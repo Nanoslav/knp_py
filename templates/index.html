@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kámen, nůžky, papír</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+    <h1>Kámen, nůžky, papír</h1>
+    <a href="{{url_for('data')}}">Záznamy</a><br><br>
+
+    <div class="box">
+        <form method="post">
+            <h3>Vyber možnost</h3>
+            <select name="select" id="select">
+                <option value="kámen">Kámen</option>
+                <option value="nůžky">Nůžky</option>
+                <option value="papír">Papír</option>
+            </select><br><br>
+            <button type="submit" id="submit">Odeslat</button>
+        </form>
+    </div>
+
+    {% if vysledek %}
+    <h1>Výsledek: {{vysledek|safe}}</h1>
+    <h2>Tvoje volba: {{choice}}<br>
+        Volba počítače: {{choicePC}}</h2>
+    {% endif %}
+
+    {% include "score.html" %}
+</body>
+
+</html>

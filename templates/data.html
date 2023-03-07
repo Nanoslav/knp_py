@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kámen, nůžky, papír</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+    <h1>Kámen, nůžky, papír</h1>
+    <a href="{{url_for('hra')}}">Zpět na hru</a>
+    <h1>Záznamy</h1>
+
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tvoje volba</th>
+                    <th>Volba PC</th>
+                    <th>Výsledek</th>
+                    <th>Datum</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for zaznam in data %}
+                <tr>
+                    <th>{{zaznam['id']}}</th>
+                    <th>{{zaznam['vyberUZ']}}</th>
+                    <th>{{zaznam['vyberPC']}}</th>
+                    <th>{{htmlText[zaznam['vysledek']]|safe}}</th>
+                    <th>{{zaznam['date']|int|ctime}}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{url_for('removeData')}}">Smazat data v tabulce</a>
+
+    {% include "score.html" %}
+</body>
+
+</html>

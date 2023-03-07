@@ -1,0 +1,1 @@
+# Kámen, nůžky, papír
